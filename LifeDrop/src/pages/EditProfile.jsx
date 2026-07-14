@@ -14,6 +14,8 @@ const EditProfile = () => {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const isDonor = user?.role === 'Donor';
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -57,11 +59,14 @@ const EditProfile = () => {
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
     if (!formData.city.trim()) newErrors.city = 'City is required';
-    if (!formData.bloodGroup) newErrors.bloodGroup = 'Blood group is required';
-    if (!formData.age) newErrors.age = 'Age is required';
-    else if (formData.age < 18 || formData.age > 65)
-      newErrors.age = 'Age must be between 18 and 65';
-    if (!formData.gender) newErrors.gender = 'Gender is required';
+
+    if (isDonor) {
+      if (!formData.bloodGroup) newErrors.bloodGroup = 'Blood group is required';
+      if (!formData.age) newErrors.age = 'Age is required';
+      else if (formData.age < 18 || formData.age > 65)
+        newErrors.age = 'Age must be between 18 and 65';
+      if (!formData.gender) newErrors.gender = 'Gender is required';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -94,7 +99,7 @@ const EditProfile = () => {
       <DashboardSidebar />
 
       <div className="dashboard-main">
-        <DashboardHeader title="Edit Profile" subtitle="Update your donor information" />
+        <DashboardHeader title="Edit Profile" subtitle="Update your account information" />
 
         <div className="dashboard-content">
           <div className="editprofile-card">
@@ -129,45 +134,50 @@ const EditProfile = () => {
                 required
                 error={errors.city}
               />
-              <InputField
-                label="Blood Group"
-                name="bloodGroup"
-                value={formData.bloodGroup}
-                onChange={handleChange}
-                options={bloodGroupOptions}
-                required
-                error={errors.bloodGroup}
-              />
-              <InputField
-                label="Age"
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-                required
-                error={errors.age}
-              />
-              <InputField
-                label="Gender"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                options={genderOptions}
-                required
-                error={errors.gender}
-              />
 
-              <div className="editprofile-toggle">
-                <label className="editprofile-toggle-label">
-                  <input
-                    type="checkbox"
-                    checked={formData.available}
-                    onChange={handleAvailabilityToggle}
-                    className="editprofile-toggle-checkbox"
+              {isDonor && (
+                <>
+                  <InputField
+                    label="Blood Group"
+                    name="bloodGroup"
+                    value={formData.bloodGroup}
+                    onChange={handleChange}
+                    options={bloodGroupOptions}
+                    required
+                    error={errors.bloodGroup}
                   />
-                  Available to donate
-                </label>
-              </div>
+                  <InputField
+                    label="Age"
+                    type="number"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleChange}
+                    required
+                    error={errors.age}
+                  />
+                  <InputField
+                    label="Gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    options={genderOptions}
+                    required
+                    error={errors.gender}
+                  />
+
+                  <div className="editprofile-toggle">
+                    <label className="editprofile-toggle-label">
+                      <input
+                        type="checkbox"
+                        checked={formData.available}
+                        onChange={handleAvailabilityToggle}
+                        className="editprofile-toggle-checkbox"
+                      />
+                      Available to donate
+                    </label>
+                  </div>
+                </>
+              )}
 
               <button
                 type="submit"

@@ -1939,3 +1939,74 @@ img {
     padding: 1.75rem;
   }
 }
+
+/* ==========================================================================
+   Role Selector
+   ========================================================================== */
+
+.role-select {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.role-select-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  padding: 1.25rem 1.4rem;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  background-color: var(--color-gray-50);
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.role-select-option:hover {
+  border-color: var(--color-primary-soft);
+  background-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.role-select-option-active {
+  border-color: var(--color-primary);
+  background: linear-gradient(160deg, var(--color-primary-light), var(--color-white));
+  box-shadow: var(--shadow-sm);
+}
+
+.role-select-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.role-select-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-gray-900);
+}
+
+.role-select-desc {
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+}
+
+.role-select-error {
+  color: var(--color-danger);
+  font-size: 0.85rem;
+  margin: -1rem 0 1.25rem;
+}
+
+.dashboard-sidebar-role-badge {
+  display: inline-block;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-600);
+  font-weight: 700;
+  padding: 0.22rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+}
