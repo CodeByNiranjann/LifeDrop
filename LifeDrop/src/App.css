@@ -1,3 +1,4 @@
+
 /* ==========================================================================
    Global Styles
    ========================================================================== */
@@ -2009,4 +2010,56 @@ img {
   padding: 0.22rem 0.75rem;
   border-radius: var(--radius-full);
   font-size: 0.8rem;
+}
+/* ==========================================================================
+   RequestCard — Owner Actions & Status
+   ========================================================================== */
+
+.requestcard-fulfilled {
+  opacity: 0.7;
+  background-color: var(--color-gray-50);
+}
+
+.requestcard-contact-text {
+  font-size: 0.9rem;
+  color: var(--color-gray-700);
+  margin-bottom: 0.4rem;
+}
+
+.requestcard-status-fulfilled {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.32rem 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.requestcard-owner-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.requestcard-action-btn {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.requestcard-cancel-btn {
+  flex: 1;
+  background: none;
+  border: 1.5px solid var(--color-danger);
+  color: var(--color-danger);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.requestcard-cancel-btn:hover {
+  background-color: var(--color-danger-bg);
 }
