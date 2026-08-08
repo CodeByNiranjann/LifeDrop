@@ -48,8 +48,8 @@ const Footer = () => {
 
         <div className="footer-column">
           <h4 className="footer-heading">Contact Info</h4>
-          <p className="footer-text">Email: support@lifedrop.com</p>
-          <p className="footer-text">Phone: +1 (800) 555-0199</p>
+          <p className="footer-text">Email: supportlifedrop@gmail.com</p>
+          <p className="footer-text">Phone: +91 6382937310</p>
           <p className="footer-text">Available 24/7 for emergencies</p>
         </div>
       </div>
