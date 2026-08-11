@@ -4,26 +4,7 @@ A full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) web application t
 
 > ⚠️ **Status:** This project is currently in local development and has not been deployed to a live/production environment yet.
 
----
 
-## 📋 Table of Contents
-
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Database Schema](#database-schema)
-- [API Endpoints](#api-endpoints)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Environment Variables](#environment-variables)
-  - [Running the App](#running-the-app)
-- [User Roles](#user-roles)
-- [Screenshots](#screenshots)
-- [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
