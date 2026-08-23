@@ -90,9 +90,9 @@ The frontend (Vite + React) is deployed as a static site on Vercel, and communic
 ```
 LifeDrop/
 │
-├── client/                     # React frontend (Vite) — deployed on Vercel
-│   ├── public/
-│   ├── src/
+├── src/                   # React frontend (Vite) — deployed on Vercel
+│   │ 
+│   ├──/
 │   │   ├── assets/              # Images and static assets
 │   │   ├── components/          # Reusable UI components
 │   │   │   ├── Navbar.jsx
