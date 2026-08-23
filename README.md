@@ -2,9 +2,30 @@
 
 A full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) web application that connects blood donors with patients and hospitals in need. LifeDrop makes it simple to register as a donor, search for available donors by blood group and city, and post or respond to urgent blood requests.
 
-> ⚠️ **Status:** This project is currently in local development and has not been deployed to a live/production environment yet.
+🔗 **Live Demo:** [life-drop-eight.vercel.app](https://life-drop-eight.vercel.app/)
+📦 **Repository:** [github.com/CodeByNiranjann/LifeDrop](https://github.com/CodeByNiranjann/LifeDrop)
 
+---
 
+## 📋 Table of Contents
+
+- [About the Project](#about-the-project)
+- [Live Deployment](#live-deployment)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Database Schema](#database-schema)
+- [API Endpoints](#api-endpoints)
+- [Getting Started Locally](#getting-started-locally)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Running the App](#running-the-app)
+- [User Roles](#user-roles)
+- [Screenshots](#screenshots)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -12,7 +33,19 @@ A full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) web application t
 
 LifeDrop is a blood donation management platform designed to bridge the gap between blood donors and people in urgent need of blood. The platform supports two types of registered users — **Donors**, who make their blood availability visible for search, and **Seekers**, who simply want to browse donors or post blood requests without registering their own donor profile.
 
-Every core feature — authentication, donor search, blood requests — is powered by a real REST API backed by MongoDB, with JWT-based authentication securing all protected routes.
+Every core feature — authentication, donor search, blood requests — is powered by a real REST API backed by MongoDB Atlas, with JWT-based authentication securing all protected routes.
+
+---
+
+## 🌐 Live Deployment
+
+| Layer | Platform | URL |
+|---|---|---|
+| Frontend | [Vercel](https://vercel.com/) | [life-drop-eight.vercel.app](https://life-drop-eight.vercel.app/) |
+| Backend / API | [Render](https://render.com/) | Deployed as a Node/Express web service |
+| Database | [MongoDB Atlas](https://www.mongodb.com/atlas) | Cloud-hosted MongoDB cluster |
+
+The frontend (Vite + React) is deployed as a static site on Vercel, and communicates with the Express API hosted on Render, which connects to a MongoDB Atlas cluster.
 
 ---
 
@@ -27,6 +60,7 @@ Every core feature — authentication, donor search, blood requests — is power
 - 📱 **Fully Responsive UI** — Optimized for desktop, tablet, and mobile
 - 📧 **Contact Form** — Integrated with FormSubmit for direct email delivery, no backend required
 - 🎨 **Custom Design System** — Hand-built UI with a single organized stylesheet (no CSS frameworks)
+- ☁️ **Fully Deployed** — Live frontend on Vercel, live API on Render, cloud database on MongoDB Atlas
 
 ---
 
@@ -38,39 +72,77 @@ Every core feature — authentication, donor search, blood requests — is power
 - Axios
 - Context API for global auth state
 - Plain CSS (single `App.css`, no Tailwind/Bootstrap/MUI)
+- Deployed on **Vercel**
 
 **Backend**
 - Node.js
 - Express.js
-- MongoDB with Mongoose
+- MongoDB Atlas with Mongoose
 - JSON Web Tokens (JWT)
 - bcryptjs for password hashing
 - MVC architecture
+- Deployed on **Render**
 
 ---
 
 ## 📁 Project Structure
 
 ```
-blood-donation-app/
+LifeDrop/
 │
-├── client/                     # React frontend (Vite)
-│   └── src/
-│       ├── components/         # Reusable UI components
-│       ├── pages/               # Route-level pages
-│       ├── context/             # AuthContext (global auth state)
-│       ├── services/            # Axios API service layer
-│       ├── data/                # Static reference data (FAQ, blood group info)
-│       └── App.jsx / App.css
+├── client/                     # React frontend (Vite) — deployed on Vercel
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/              # Images and static assets
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Hero.jsx
+│   │   │   ├── DonorCard.jsx
+│   │   │   ├── RequestCard.jsx
+│   │   │   ├── PrivateRoute.jsx
+│   │   │   └── ...
+│   │   ├── pages/                # Route-level pages
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── SearchDonor.jsx
+│   │   │   ├── BloodRequest.jsx
+│   │   │   └── ...
+│   │   ├── context/               # AuthContext (global auth state)
+│   │   ├── services/              # Axios API service layer
+│   │   ├── data/                  # Static reference data (FAQ, blood group info)
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
 │
-└── server/                     # Express backend
-    ├── config/                  # Database connection
-    ├── models/                  # Mongoose schemas (User, BloodRequest)
-    ├── controllers/             # Route logic
-    ├── middleware/               # Auth & error handling
-    ├── routes/                  # Express routers
-    ├── utils/                   # JWT token generator
-    └── server.js
+├── server/                     # Express backend — deployed on Render
+│   ├── config/
+│   │   └── db.js                  # MongoDB Atlas connection
+│   ├── models/
+│   │   ├── User.js
+│   │   └── BloodRequest.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── donorController.js
+│   │   └── requestController.js
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── errorMiddleware.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── donorRoutes.js
+│   │   └── requestRoutes.js
+│   ├── utils/
+│   │   └── generateToken.js
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+└── README.md
 ```
 
 ---
@@ -101,6 +173,8 @@ blood-donation-app/
 
 ## 🔌 API Endpoints
 
+Base URL (production): your deployed Render service URL, e.g. `https://your-service.onrender.com/api`
+
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
 | POST | `/api/auth/register` | Public | Register a new Donor or Seeker |
@@ -119,12 +193,12 @@ All private routes require a valid JWT sent as `Authorization: Bearer <token>`.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [MongoDB](https://www.mongodb.com/) — a local instance or a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
+- [MongoDB Atlas](https://www.mongodb.com/atlas) account (or a local MongoDB instance)
 - npm (comes with Node.js)
 
 ### Installation
@@ -132,8 +206,8 @@ All private routes require a valid JWT sent as `Authorization: Bearer <token>`.
 Clone the repository and install dependencies for both the client and server:
 
 ```bash
-git clone https://github.com/your-username/lifedrop-blood-donation.git
-cd lifedrop-blood-donation
+git clone https://github.com/CodeByNiranjann/LifeDrop.git
+cd LifeDrop
 
 # Install backend dependencies
 cd server
@@ -149,7 +223,7 @@ npm install
 Inside the `server/` folder, create a `.env` file based on `.env.example`:
 
 ```env
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_atlas_connection_string
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRES_IN=30d
 PORT=5000
@@ -157,6 +231,8 @@ NODE_ENV=development
 ```
 
 > 🔒 **Note:** If your MongoDB password contains special characters (e.g. `@`, `#`, `%`), they must be URL-encoded in the connection string (e.g. `@` → `%40`).
+
+Inside the `client/` folder, update the API base URL in `src/services/api.js` to point to your local backend (`http://localhost:5000/api`) during local development, or your deployed Render URL for production builds.
 
 ### Running the App
 
@@ -198,7 +274,7 @@ Both account types require registration and login — the platform has no public
 
 ## 📸 Screenshots
 
-> _Add screenshots of the Home, Search, Dashboard, and Blood Request pages here once available._
+> _Add screenshots of the Home, Search, Dashboard, and Blood Request pages here._
 
 ```
 ![Home Page](./screenshots/home.png)
@@ -215,7 +291,7 @@ Both account types require registration and login — the platform has no public
 - [ ] Admin dashboard for moderating requests and donor data
 - [ ] "My Requests" history page for viewing fulfilled/cancelled requests
 - [ ] Geolocation-based donor search (distance sorting)
-- [ ] Deployment to a live environment (Render / Vercel / Railway + MongoDB Atlas)
+- [ ] Custom domain for the live deployment
 
 ---
 
@@ -237,4 +313,4 @@ This project is licensed under the MIT License — feel free to use, modify, and
 
 ---
 
-<p align="center">Made with ❤️ to help save lives, one connection at a time.</p>
+<p align="center">Made with ❤️ by <a href="https://github.com/CodeByNiranjann">Niranjan</a> — to help save lives, one connection at a time.</p>
